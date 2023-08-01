@@ -23,3 +23,6 @@ create table post (
     key fk_post_usuario_idx (usuario_id),
     constraint fk_post_usuario foreign key (usuario_id) references usuario (id)
  );
+
+git config --global user.email "renanrodriguesmoreira@hotmail.com"
+git config --global user.name "Renan Moreira"
