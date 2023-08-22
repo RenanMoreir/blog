@@ -5,10 +5,10 @@ require_once '../core/conexao_mysql.php';
 require_once '../core/sql.php';
 require_once '../core/mysql.php';
 
-insert_teste('João', 'joao@ifsp.edu.br', '123456');
-buscar_teste();
-update_teste(38, 'murilo', 'silva@gmail.com');
-buscar_teste();
+//insert_teste('Cassio', 'joao@ifsp.edu.br', '123456');
+//buscar_teste();
+update_teste(3, 'murilo', 'silva@gmail.com');
+//buscar_teste();
 
 function insert_teste($nome, $email, $senha) :void
 {
@@ -26,7 +26,7 @@ function update_teste($id, $nome, $email) : void
 {
     $dados = ['nome' => $nome,'email' => $email];
     $criterio = [['id', '=', $id]];
-    autalizar('usuario', $dados,$criterio);
+    atualizar('usuario', $dados,$criterio);
 }
 
 ?>

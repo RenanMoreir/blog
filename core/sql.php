@@ -30,7 +30,7 @@
                 $instrucao .= ' ' . implode(' ', $expressao);
             }
         }
-
+        //echo $instrucao;
         return $instrucao;
     }
 

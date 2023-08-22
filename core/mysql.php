@@ -11,7 +11,6 @@
         }
 
         $instrucao = insert($entidade, $coringa);
-
         $conexao = conecta();
 
         $stmt = mysqli_prepare($conexao, $instrucao);
@@ -21,7 +20,7 @@
 
         mysqli_stmt_execute($stmt);
 
-        $retorno = (boolean) mysqli_stmt_affected_rows($stmt);
+        $retorno = (boolean) mysqli_stmt_affected_rows($stmt);  
 
         $_SESSION['errors'] = mysqli_stmt_error_list($stmt);
 
@@ -32,7 +31,7 @@
         return $retorno;
     }
 
-    function autalizar (string $entidade, array $dados, array $criterio = []) : bool
+    function atualizar (string $entidade, array $dados, array $criterio = []) : bool
     {
         $retorno = false;
 
@@ -79,9 +78,9 @@
        mysqli_stmt_execute($stmt);
 
        $retorno = (boolean) mysqli_stmt_affected_rows($stmt);
-
+       
        $_SESSION['errors'] = mysqli_stmt_error_list($stmt);
-
+       
        mysqli_stmt_close($stmt);
 
        desconecta($conexao);
