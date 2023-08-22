@@ -6,13 +6,14 @@ require_once '../core/sql.php';
 require_once '../core/mysql.php';
 
 insert_teste(10, 'legal', 8, 3);
-//buscar_teste();
+buscar_teste();
 //update_teste(1, 4,'pessimo');
 //buscar_teste();
 
-function insert_teste($nota, $comentario, $usuario_id, $post_id) :void
+function insert_teste($nota, $comentario, $u_id, $post_id) :void
 {
-    $dados = ['nota' => $nota, 'comentario' => $comentario, 'usuario_id ' => $usuario_id, 'post_id' => $post_id  ];
+    $dados = ['nota' => $nota, 'comentario' => $comentario, 'usuario_id' => $u_id, 'post_id' => $post_id  ];
+    print_r($dados);
     insere('avaliacao',$dados);
 }
 
