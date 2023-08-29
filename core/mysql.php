@@ -18,7 +18,7 @@
         eval('mysqli_stmt_bind_param($stmt, \'' . implode('',$tipo) . '\',$'. implode(', $', array_keys($dados)) . ');');
         echo ('mysqli_stmt_bind_param($stmt, \'' . implode('',$tipo) . '\',$'. implode(', $', array_keys($dados)) . ');');
 
-        echo  "<br>murilo".$usuario_id ;
+        
         mysqli_stmt_execute($stmt);
 
         $retorno = (boolean) mysqli_stmt_affected_rows($stmt);  
@@ -57,11 +57,12 @@
 
             $campos_criterio[] = $nome_campo;
             
-            $$nome_campo = $dados;
+            $$nome_campo = $dado;
+            
         }
 
        $instrucao = update($entidade, $coringa_dados, $coringa_criterio);
-       //echo $instrucao;
+       //echo "<br>".$instrucao."<br>";
        $conexao = conecta();
 
        $stmt = mysqli_prepare($conexao, $instrucao);
@@ -72,15 +73,17 @@
         $comando .= ', $' . implode(', $', array_keys($dados));
         $comando .= ', $' . implode(', $', $campos_criterio); 
         $comando .= ');';
-        //echo $comando;
+        //echo "<br>".$comando."<br>";
         eval($comando);
        }
 
        mysqli_stmt_execute($stmt);
 
        $retorno = (boolean) mysqli_stmt_affected_rows($stmt);
-       
+      
        $_SESSION['errors'] = mysqli_stmt_error_list($stmt);
+
+       print_r($_SESSION['errors'] );
        
        mysqli_stmt_close($stmt);
 
@@ -177,7 +180,7 @@
             eval($comando);
         }
 
-        mysqli_stmt_execute($stmt);
+            mysqli_stmt_execute($stmt);
 
        if($result = mysqli_stmt_get_result($stmt)) {
             $retorno = mysqli_fetch_all($result, MYSQLI_ASSOC);

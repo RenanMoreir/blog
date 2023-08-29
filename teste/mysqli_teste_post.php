@@ -5,9 +5,9 @@ require_once '../core/conexao_mysql.php';
 require_once '../core/sql.php';
 require_once '../core/mysql.php';
 
-//insert_teste('postagem', 'uma postagem aqui ', 8, date('Y-m-d H:i:s'));
-//buscar_teste();
-update_teste(1, 'nova postagem', 'murilo');
+insert_teste('postagem', 'uma postagem aqui', 1, date('Y-m-d H:i:s'));
+buscar_teste();
+//update_teste(5, 'nova postagem', 'murilo');
 //buscar_teste();
 
 function insert_teste($titulo, $texto, $id_usuario, $data_postagem) :void
@@ -18,7 +18,7 @@ function insert_teste($titulo, $texto, $id_usuario, $data_postagem) :void
 
 function buscar_teste() : void
 {
-    $usuarios = buscar('usuario', [ 'id', 'nome', 'email'],[],'');
+    $usuarios = buscar('post', [ 'id', 'titulo', 'texto'],[],'');
     print_r($usuarios);
 }
 
@@ -26,7 +26,7 @@ function update_teste($id, $titulo, $texto) : void
 {
     $dados = ['titulo' => $titulo,'texto' => $texto];
     $criterio = [['id', '=', $id]];
-    atualizar('usuario', $dados,$criterio);
+    atualizar('post', $dados,$criterio);
 }
 
 ?>
